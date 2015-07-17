@@ -11,9 +11,24 @@ meteor add clinical:auto-resizing
 
 
 ======================================
-#### Usage
+#### API  
 
-Simply put ``<div class="hidden">{{resize}}</div>`` in any template, like so:
+````js
+Session.get('resize');
+Session.get('appHeight');
+Session.get('appWidth');
+````
+
+````html
+{{#if isPortrait}}{{/if}}
+{{#if isLandscape}}{{/if}}
+````
+
+
+======================================
+#### Auto Refresh Templates on Browser Resize
+
+Simply put ``<div class="hidden">{{resize}}</div>`` in any template, and your template will get rerendered when the browser window is resized.
 
 ````html
 <template name="examplePage">
@@ -24,8 +39,46 @@ Simply put ``<div class="hidden">{{resize}}</div>`` in any template, like so:
 </template>
 ````
 
-And then trigger it by resizing the browser, or setting the resize session variable.
+======================================
+#### Manually Refresh Templates  
+
+Alternatively, you can trigger it by manually setting the resize session variable.
 
 ````js
 Session.set('resize', new Date());
+````
+
+======================================
+#### Custom Layout Logic  
+
+You can also specify locations of div by using ``Session.get('appWidth')`` and ``Session.get('appHeight')``.
+````js
+Template.appLayout.layout = function(){
+  Session.set('customDivHeight', $('#innerPanel').height() + 80);
+  if(Session.get('appWidth') > 1636){
+    Session.set('customDivLeft', (Session.get('appWidth') - 1536) * 0.5);
+  }else if(Session.get('appWidth') > 768){
+    Session.set('customDivLeft', (Session.get('appWidth') - 768) * 0.5);
+  }else{
+    Session.set('customDivLeft', 0);
+  }
+}
+````
+
+======================================
+#### Detecting Portrait and Landscape  
+
+
+````html
+<template name="examplePage">
+  <div id="examplePage">
+    {{#if isPortrait}}
+      <!-- show an image of portrait -->
+    {{/if}}
+    {{#if isLandscape}}
+      <!-- show an image of landscape -->
+    {{/if}}
+    <!-- show stuff on both -->    
+  </div>
+</template>
 ````
