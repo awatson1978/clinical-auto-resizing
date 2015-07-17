@@ -68,7 +68,6 @@ Template.appLayout.layout = function(){
 ======================================
 #### Detecting Portrait and Landscape  
 
-
 ````html
 <template name="examplePage">
   <div id="examplePage">
@@ -78,7 +77,21 @@ Template.appLayout.layout = function(){
     {{#if isLandscape}}
       <!-- show an image of landscape -->
     {{/if}}
-    <!-- show stuff on both -->    
+    <!-- show stuff on both -->
   </div>
 </template>
 ````
+
+
+======================================
+#### Dynamic Styling
+
+````html
+
+````
+
+
+======================================
+#### Licensing  
+
+MIT.  Use as you will.  Disrupt the current system.  It needs all the help it can get.
