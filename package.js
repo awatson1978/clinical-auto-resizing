@@ -1,6 +1,6 @@
 Package.describe({
   summary: 'Hooks for resizing UI elements.',
-  version: '0.3.2',
+  version: '0.3.3',
   name: 'clinical:auto-resizing',
   git: 'http://github.com/awatson1978/auto-resizing.git'
 });
